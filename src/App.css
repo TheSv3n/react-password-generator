@@ -1,22 +1,32 @@
-.App {
+:root {
+  --mainBlue: #2a2a72;
+  --lightBlue: #009ffd;
+  --mainWhite: #f3f3f3;
+  --mainDark: #232528;
+  --mainYellow: #ffa400;
+  --mainRed: #ff1100;
+  --mainGreen: #119911;
+  --mainGrey: #dddddd;
+}
+
+body {
+  background: var(--mainGrey);
+  color: var(--mainWhite);
+}
+
+.navbar {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.form-bordered {
+  border: 0.2rem solid var(--mainGreen) !important;
+  background: var(--mainDark);
+  border-radius: 10px !important;
+  text-align: center;
+  transition: all 0.2s linear;
+  height: 40rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
+.form-title {
+  font-size: 1.5rem;
 }
