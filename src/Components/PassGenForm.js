@@ -63,6 +63,20 @@ export default class PassGenForm extends Component {
                           />
                         </label>
                       </div>
+                      <div className="row">
+                        <button
+                          type="submit"
+                          onClick={value.generatePassword}
+                          className="btn btn-block btn-primary col-11 mx-auto mt-1"
+                        >
+                          Generate
+                        </button>
+                      </div>
+                      <div className="row">
+                        <div className="col-11 mx-auto col-md-11 col-lg-11 text-center">
+                          {/* Password Display */}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

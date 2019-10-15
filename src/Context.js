@@ -25,13 +25,16 @@ export default class ProductProvider extends Component {
     this.setState({ length: event.target.value });
   };
 
+  generatePassword = () => {};
+
   render() {
     return (
       <ProductContext.Provider
         value={{
           ...this.state,
           handleInputChange: this.handleInputChange,
-          handleChangeLength: this.handleChangeLength
+          handleChangeLength: this.handleChangeLength,
+          generatePassword: this.generatePassword
         }}
       >
         {this.props.children}
