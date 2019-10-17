@@ -25,7 +25,46 @@ export default class ProductProvider extends Component {
     this.setState({ length: event.target.value });
   };
 
-  generatePassword = () => {};
+  getCharacter = charCodeArray => {
+    let randomInt = Math.floor(Math.random() * (charCodeArray.length - 0)) + 0;
+    return String.fromCharCode(charCodeArray[randomInt]);
+  };
+
+  getCharCodes = (min, max) => {
+    let tempCodes = [];
+    for (var i = min; i <= max; i++) {
+      tempCodes.push(i);
+    }
+    return tempCodes;
+  };
+
+  generatePassword = () => {
+    let intLength = parseInt(this.state.length, 10);
+    let tempPassword = [];
+
+    //lowercase: 97 - 122
+    //uppercase: 65 - 90
+    //Numbers: 48 - 58
+
+    let charCodes = [...this.getCharCodes(97, 122)];
+    if (this.state.upperCase) {
+      charCodes = [...charCodes, ...this.getCharCodes(65, 90)];
+    }
+    if (this.state.numbers) {
+      charCodes = [...charCodes, ...this.getCharCodes(48, 57)];
+    }
+    if (this.state.symbols) {
+      charCodes = [...charCodes, ...this.getCharCodes(33, 47)];
+    }
+
+    for (var i = 0; i < intLength; i++) {
+      tempPassword.push(this.getCharacter(charCodes));
+    }
+    tempPassword = tempPassword.join("");
+    console.log(tempPassword);
+
+    this.setState({ password: tempPassword });
+  };
 
   render() {
     return (
