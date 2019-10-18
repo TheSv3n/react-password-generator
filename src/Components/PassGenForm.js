@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { ProductConsumer } from "../Context";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default class PassGenForm extends Component {
+  state = {
+    generated: false
+  };
   render() {
     return (
       <ProductConsumer>
@@ -66,7 +70,10 @@ export default class PassGenForm extends Component {
                       <div className="row">
                         <button
                           type="submit"
-                          onClick={value.generatePassword}
+                          onClick={() => {
+                            value.generatePassword();
+                            this.setState({ generated: true });
+                          }}
                           className="btn btn-block btn-primary col-11 mx-auto mt-1"
                         >
                           Generate
@@ -74,7 +81,19 @@ export default class PassGenForm extends Component {
                       </div>
                       <div className="row">
                         <div className="col-11 mx-auto col-md-11 col-lg-11 text-center my-4 password-text">
-                          {value.password}
+                          {value.password}{" "}
+                          {this.state.generated ? (
+                            <CopyToClipboard
+                              text={value.password}
+                              className="btn btn-success mx-auto mt-1"
+                            >
+                              <button>
+                                <i className="fas fa-copy"></i>
+                              </button>
+                            </CopyToClipboard>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </div>
                     </div>

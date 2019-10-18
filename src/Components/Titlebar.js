@@ -5,7 +5,7 @@ export default class Titlebar extends Component {
   render() {
     return (
       <NavWrapper className="navbar">
-        <div className="mx-auto">React Password Generator</div>
+        <div className="mx-auto title-text">React Password Generator</div>
       </NavWrapper>
     );
   }
