@@ -2,9 +2,12 @@
   "name": "react-password-generator",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "path": "^0.12.7",
     "react": "^16.10.2",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.10.2",
