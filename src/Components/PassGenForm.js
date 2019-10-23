@@ -37,6 +37,10 @@ export default class PassGenForm extends Component {
                             <option value="14">14</option>
                             <option value="15">15</option>
                             <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
                           </select>
                         </label>
                         <label className="col-2 mx-auto">

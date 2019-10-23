@@ -27,7 +27,7 @@ export default class ProductProvider extends Component {
 
   getCharacter = charCodeArray => {
     let randomInt = Math.floor(Math.random() * (charCodeArray.length - 0)) + 0;
-    return String.fromCharCode(charCodeArray[randomInt]);
+    return charCodeArray[randomInt];
   };
 
   getCharCodes = (min, max) => {
@@ -41,6 +41,9 @@ export default class ProductProvider extends Component {
   generatePassword = () => {
     let intLength = parseInt(this.state.length, 10);
     let tempPassword = [];
+    let needsSymbol = false;
+    let needsNumber = false;
+    let needsUpper = false;
 
     //lowercase: 97 - 122
     //uppercase: 65 - 90
@@ -57,9 +60,29 @@ export default class ProductProvider extends Component {
       charCodes = [...charCodes, ...this.getCharCodes(33, 47)];
     }
 
-    for (var i = 0; i < intLength; i++) {
-      tempPassword.push(this.getCharacter(charCodes));
-    }
+    do {
+      tempPassword = [];
+      needsUpper = this.state.upperCase;
+      needsNumber = this.state.numbers;
+      needsSymbol = this.state.symbols;
+      for (var i = 0; i < intLength; i++) {
+        let charCode = this.getCharacter(charCodes);
+        tempPassword.push(String.fromCharCode(charCode));
+        if (charCode >= 65 && charCode <= 90) {
+          needsUpper = false;
+        }
+        if (charCode >= 48 && charCode <= 57) {
+          needsNumber = false;
+        }
+        if (charCode >= 33 && charCode <= 47) {
+          needsSymbol = false;
+        }
+      }
+      console.log(
+        `needs up: ${needsUpper}, needs num: ${needsNumber}, needs symbol: ${needsSymbol}`
+      );
+    } while (needsUpper || needsNumber || needsSymbol);
+
     tempPassword = tempPassword.join("");
     console.log(tempPassword);
 
